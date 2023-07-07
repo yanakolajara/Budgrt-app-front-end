@@ -8,6 +8,10 @@ import { Create } from './Create/Create';
 function App() {
   return (
     <div className="App">
+      <main>
+        <h1>Budget App</h1>
+        <button>NEW TRANSACTION</button>
+      </main>
       <Routes>
         <Route path='/' element={<Homepage/>}/>
         <Route path='/show/:id' element={<Show/>}/>
