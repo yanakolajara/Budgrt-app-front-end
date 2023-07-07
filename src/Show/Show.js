@@ -21,6 +21,7 @@ export function Show(){
             setData(fetch.data)
         }catch(e){
             console.log(e)
+            navigate('/notfound')
         }
     }
     async function formSubmited(x){
@@ -99,7 +100,7 @@ export function Show(){
             <button id="showBackButton" onClick={() => navigate('/')}>BACK</button>
             <div id="displayTransaction">
                 <h2 class="showTransItem">{data.item}</h2>
-                <p class="showTransAmount">${data.amount}</p>
+                <p class="showTransAmount">${Number(data.amount).toLocaleString("en-US")}</p>
                 <p class="showTransDate">{data.date}</p>
                 <p class="showTransFrom">From: {data.from}</p>
                 <p class="showTransCategory">Category: {data.category}</p>

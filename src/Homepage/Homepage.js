@@ -10,8 +10,12 @@ export function Homepage(){
         try{
             const fetch = await axios.get('http://localhost:3002/transactions')
             setData(fetch.data)
-            //FIXME: Total logic not working
-            //! setTotal(data.reduce((x,y) => Number(x.amount) + Number(y.amount), 0))
+            let newTotal = 0
+            for(const x of fetch.data){
+                newTotal += Number(x.amount)
+                console.log(`total value: ${total}\nnewTotal: ${newTotal}`)
+            }
+            setTotal(newTotal)
         }catch(e){
             console.log(e)
         }
@@ -19,12 +23,22 @@ export function Homepage(){
     function showTransaction(transactionID){
         navigate(`/show/${transactionID}`)
     }
+    function numberColor(x){
+        if(x > 100){
+            return 'greenNumber'
+        }else if(x > 0 && x <= 100){
+            return 'yellowNumber'
+        }else{
+            return 'redNumber'
+        }
+    }
+
     useEffect(() => {
         fetchData()
     }, [])
     return(
         <div id="homepage">
-            {total}
+            <h1>Current balance: ${total.toLocaleString("en-US")}</h1>
             <div class="allTransactions">
                 {data.map(x => {
                     return(
@@ -33,7 +47,10 @@ export function Homepage(){
                             <p class="transactionDate">{x.date}</p>
                             <p class="transactionItem" onClick={x => showTransaction(x.target.parentNode.id)}>{x.item}</p>
                             <div class="amountBox">
-                                <p class="transactionAmount">${x.amount}</p>
+                                <p
+                                class="transactionAmount"
+                                id={numberColor(x.amount)}
+                                >${Number(x.amount).toLocaleString("en-US")}</p>
                             </div>
                         </div>
                         <hr/>
