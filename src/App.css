@@ -1,8 +1,23 @@
 main {
-  background-color: beige;
-  height: 100px;
+  background-color: rgb(6, 55, 147);
+  color: rgb(205, 222, 255);
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  height: 120px;
 }
-nav {
-  background-color: bisque;
-  height: 2px;
+
+main h1{
+  margin-left: 40px;
+  font-size: 3em;
+  align-self: center;
+}
+
+main button{
+  justify-self: center;
+  align-self: center;
+  height: 50%;
+  background-color: rgb(22, 88, 212);
+  color: rgb(205, 222, 255);
+  font-size: 1.5em;
+  font-weight: bold;
 }
