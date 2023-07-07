@@ -13,6 +13,9 @@ export function Homepage(){
             console.log(e)
         }
     }
+    function showTransaction(transactionID){
+        navigate(`/show/${transactionID}`)
+    }
     useEffect(() => {
         fetchData()
     }, [])
@@ -20,9 +23,9 @@ export function Homepage(){
         <>
         {data.map(x => {
             return(
-                <div class="transactionBox">
+                <div class="transactionBox" id={x.id}>
                     <p class="transactionDate">{x.date}</p>
-                    <a class="transactionItem" href="">{x.item}</a>
+                    <p class="transactionItem" onClick={x => showTransaction(x.target.parentNode.id)}>{x.item}</p>
                     <p class="transactionName">{x.amount}</p>
                 </div>
             )
