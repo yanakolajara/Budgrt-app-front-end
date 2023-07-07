@@ -4,13 +4,15 @@ import { Route, Routes } from 'react-router-dom';
 import { Homepage } from './Homepage/Homepage';
 import { Show } from './Show/Show';
 import { Create } from './Create/Create';
+import { useNavigate } from 'react-router-dom'
 
 function App() {
+  const navigate = useNavigate()
   return (
     <div className="App">
       <main>
         <h1>Budget App</h1>
-        <button>NEW TRANSACTION</button>
+        <button onClick={() => navigate('/create')}>NEW TRANSACTION</button>
       </main>
       <Routes>
         <Route path='/' element={<Homepage/>}/>
