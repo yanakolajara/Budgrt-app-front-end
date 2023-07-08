@@ -17,7 +17,7 @@ export function Show(){
 
     async function fetchData(){
         try{
-            const fetch = await axios.get(`http://localhost:3002/transactions/${transactionID}`)
+            const fetch = await axios.get(`https://budgrt-back-end.onrender.com/transactions/${transactionID}`)
             setData(fetch.data)
         }catch(e){
             console.log(e)

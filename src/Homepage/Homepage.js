@@ -8,7 +8,7 @@ export function Homepage(){
     const [total, setTotal] = useState(0)
     async function fetchData(){
         try{
-            const fetch = await axios.get('http://localhost:3002/transactions')
+            const fetch = await axios.get('https://budgrt-back-end.onrender.com/transactions')
             setData(fetch.data)
             let newTotal = 0
             for(const x of fetch.data){

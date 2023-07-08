@@ -54,7 +54,7 @@ export function Create(){
                     break;
         }
         try{
-            const fetch = await axios.post('http://localhost:3002/transactions',{
+            const fetch = await axios.post('https://budgrt-back-end.onrender.com/transactions',{
                 id: '',
                 item: item,
                 amount: amount,
