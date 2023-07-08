@@ -2,20 +2,23 @@
 
 Budgtr is an application where people can log their financial transactions. 
 
-This project was created by Yanako Lajara in 
+# Setup intructions
 
-TODO: Add waka time
-TODO: Add setip intructions
-TODO: Add link to back-end github repo
-TODO: Add link to deployed back-end 
-TODO: Add link to deployed front-end
-TODO: Add link to trello board
+- Clone this repository
+`git clone https://github.com/yanakolajara/budgrt-app-front-end`
 
-## Available Scripts
+- Install npm
+`npm install`
 
-In the project directory, you can run:
+- Install libraries
+`npm i react router axios`
 
-### `npm start`
+- Start live server
+`npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Links
+
+- GitHub Back-End Repository: https://github.com/yanakolajara/Budgrt-app
+- Back-End Link: https://budgrt-back-end.onrender.com/
+- Front-End Link: https://budgrt-ynk.netlify.app/
+- Trello Board: https://trello.com/b/1G7SjTeH/budgtr-app
