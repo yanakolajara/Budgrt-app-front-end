@@ -6,9 +6,11 @@ export function Homepage(){
     const navigate = useNavigate()
     const [data, setData] = useState([])
     const [total, setTotal] = useState(0)
+    const [loading, setLoading] = useState(true)
     async function fetchData(){
         try{
             const fetch = await axios.get('https://budgrt-back-end.onrender.com/transactions')
+            setLoading(false)
             setData(fetch.data)
             let newTotal = 0
             for(const x of fetch.data){
@@ -36,6 +38,15 @@ export function Homepage(){
     useEffect(() => {
         fetchData()
     }, [])
+    
+    if(loading){
+        return(
+            <div id="homepage">
+                <p>Loading...</p>
+            </div>
+        )
+    }
+    
     return(
         <div id="homepage">
             <h1>Current balance: ${total.toLocaleString("en-US")}</h1>
