@@ -6,7 +6,7 @@ main {
   background-color: rgb(6, 55, 147);
   color: rgb(205, 222, 255);
   display: grid;
-  grid-template-columns: 4fr 1fr;
+  grid-template-columns: 25% 55% 20%;
   height: 120px;
 }
 
@@ -16,7 +16,14 @@ main h1{
   align-self: center;
 }
 
+main h2{
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+}
+
 main button{
+  grid-column: 3/4;
   justify-self: center;
   align-self: center;
   height: 50%;
