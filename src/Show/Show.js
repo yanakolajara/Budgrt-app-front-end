@@ -68,7 +68,7 @@ export function Show(){
                     break;
         }
         try{
-            const fetch = await axios.put(`http://localhost:3002/transactions/${transactionID}`,{
+            const fetch = await axios.put(`https://budgrt-back-end.onrender.com/transactions/${transactionID}`,{
                 id: transactionID,
                 item: item,
                 amount: amount,
