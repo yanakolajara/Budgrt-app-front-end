@@ -32,6 +32,18 @@ main button{
 #homepage{
   padding: 50px;
 }
+
+#currBalanceDiv{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 85% 15%;
+}
+
+.totalText{
+  display: flex;
+  justify-content: end;
+}
+
 .allTransactions{
   border: 1px solid rgb(202, 202, 202);
   border-radius: 15px;

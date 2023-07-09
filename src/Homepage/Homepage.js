@@ -26,6 +26,15 @@ export function Homepage(){
         navigate(`/show/${transactionID}`)
     }
     function numberColor(x){
+        if(x > 0){
+            return 'greenNumber'
+        }else if(x === 0){
+            return 'yellowNumber'
+        }else{
+            return 'redNumber'
+        }
+    }
+    function totalColor(x){
         if(x > 100){
             return 'greenNumber'
         }else if(x > 0 && x <= 100){
@@ -38,7 +47,7 @@ export function Homepage(){
     useEffect(() => {
         fetchData()
     }, [])
-    
+
     if(loading){
         return(
             <div id="homepage">
@@ -46,10 +55,14 @@ export function Homepage(){
             </div>
         )
     }
+
     
     return(
         <div id="homepage">
-            <h1>Current balance: ${total.toLocaleString("en-US")}</h1>
+            <div id="currBalanceDiv">
+                <h1>Current balance: </h1>
+                <h1 class="totalText" id={totalColor(total)}>${total.toLocaleString("en-US")}</h1>
+            </div>
             <div class="allTransactions">
                 {data.map(x => {
                     return(
