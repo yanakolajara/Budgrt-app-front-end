@@ -7,17 +7,30 @@ export function Homepage(){
     const [data, setData] = useState([])
     const [total, setTotal] = useState(0)
     const [loading, setLoading] = useState(true)
+    const [categories, setCategories] = useState([])
+    const [category, setCategory] = useState('all')
     async function fetchData(){
         try{
+            // Fetch data
             const fetch = await axios.get('https://budgrt-back-end.onrender.com/transactions')
             setLoading(false)
             setData(fetch.data)
+            // Set navigator total
             let newTotal = 0
             for(const x of fetch.data){
                 newTotal += Number(x.amount)
-                console.log(`total value: ${total}\nnewTotal: ${newTotal}`)
             }
             setTotal(newTotal)
+            // Set categories
+            let categoryList = []
+            let categoryListOptions = []
+            fetch.data.forEach(x => {
+                if(!categoryList.includes(x.category)){
+                    categoryList.push(x.category)
+                    return categoryListOptions.push(<option value={x.category}>{x.category}</option>)
+                }
+            })
+            setCategories(categoryListOptions)
         }catch(e){
             console.log(e)
         }
@@ -48,6 +61,11 @@ export function Homepage(){
         fetchData()
     }, [])
 
+    useEffect(() => {
+        console.log('category changed: ' + category)
+        //TODO: Display only categories selected
+    }, [category])
+
     if(loading){
         return(
             <div id="homepage">
@@ -56,13 +74,21 @@ export function Homepage(){
         )
     }
 
-    
     return(
         <div id="homepage">
             <div id="currBalanceDiv">
                 <h1>Current balance: </h1>
                 <h1 class="totalText" id={totalColor(total)}>${total.toLocaleString("en-US")}</h1>
             </div>
+            <label for="category">Select Category</label>
+            <br/>
+            <select
+            id="category"
+            onChange={(x) => setCategory(x.target.value)}
+            >
+                <option value="all">-- All --</option>
+                {categories}
+            </select>
             <div class="allTransactions">
                 {data.map(x => {
                     return(
