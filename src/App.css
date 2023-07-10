@@ -51,6 +51,10 @@ main button{
   justify-content: end;
 }
 
+#homepage select{
+  margin-bottom: 20px;
+}
+
 .allTransactions{
   border: 1px solid rgb(202, 202, 202);
   border-radius: 15px;

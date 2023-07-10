@@ -24,7 +24,6 @@ function App() {
       let newTotal = 0
       for(const x of fetch.data){
         newTotal += Number(x.amount)
-        console.log(`total value: ${total}\nnewTotal: ${newTotal}`)
       }
       setTotal(newTotal)
     }catch(e){
