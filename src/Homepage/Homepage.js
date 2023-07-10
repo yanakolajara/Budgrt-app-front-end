@@ -57,14 +57,33 @@ export function Homepage(){
         }
     }
 
+    function showCategory(categorySelected){
+        const allTransactions = document.querySelector('.allTransactions').children
+        if(categorySelected === 'all'){
+            for(let x of allTransactions){
+                x.style.display = ''
+            }
+        }else{
+            let counter = 0
+            for(let x of allTransactions){
+                if(!(counter % 2)){
+                    if(categorySelected === x.getAttribute('category')){
+                        x.style.display = ''
+                        allTransactions[counter + 1].style.display = ''
+                    }else{
+                        x.style.display = 'none'
+                        allTransactions[counter + 1].style.display = 'none'
+                    }
+                }
+                counter++
+            }
+        }
+    }
+
     useEffect(() => {
         fetchData()
     }, [])
 
-    useEffect(() => {
-        console.log('category changed: ' + category)
-        //TODO: Display only categories selected
-    }, [category])
 
     if(loading){
         return(
@@ -84,7 +103,7 @@ export function Homepage(){
             <br/>
             <select
             id="category"
-            onChange={(x) => setCategory(x.target.value)}
+            onChange={(x) => showCategory(x.target.value)}
             >
                 <option value="all">-- All --</option>
                 {categories}
@@ -93,7 +112,7 @@ export function Homepage(){
                 {data.map(x => {
                     return(
                         <>
-                        <div class="transactionBox" id={x.id}>
+                        <div class="transactionBox" id={x.id} category={x.category}>
                             <p class="transactionDate">{x.date}</p>
                             <p class="transactionItem" onClick={x => showTransaction(x.target.parentNode.id)}>{x.item}</p>
                             <div class="amountBox">
