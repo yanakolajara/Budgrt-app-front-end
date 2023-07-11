@@ -11,6 +11,7 @@ main {
 main h1{
   margin-left: 40px;
   font-size: 3em;
+  text-shadow: 2px 2px 5px black;
   align-self: center;
 }
 
@@ -30,6 +31,11 @@ main button{
   font-size: 1.5em;
   font-weight: bold;
   border-radius: 1dvh;
+}
+
+main button:hover{
+  background-color: rgb(6, 60, 160);
+  cursor: pointer;
 }
 
 /** HOMEPAGE*/
@@ -114,10 +120,19 @@ main button{
   justify-content: center;
   padding: 50px;
 }
+
 #showBackButton{
   height: 30px;
   margin-right: 20px;
+  border-radius: 10px;
+  border: 1px solid rgb(187, 187, 187);
 }
+
+#showBackButton:hover{
+  background-color:rgb(215, 229, 255);
+  cursor: pointer;
+}
+
 #displayTransaction{
   display: flex;
   flex-direction: column;
@@ -127,6 +142,17 @@ main button{
   border-radius: 15px;
   padding: 20px;
 }
+
+#displayTransaction button{
+  width: 80px;
+  border: 1px solid rgb(187, 187, 187);
+  border-radius: 15px;
+}
+#displayTransaction button:hover{
+  background-color:rgb(215, 229, 255);
+  cursor: pointer;
+}
+
 .showTransAmount{
   font-size: 3em;
   margin: 20px 0px 0px 0px;
@@ -182,10 +208,7 @@ main button{
 }
 
 
-
-
-@media (max-width: 480px) {
-  /* Rules here apply to devices from from 768px to 991px (inclusive) */
+@media (max-width: 768px) {
   main{
     display: grid;
     grid-template-columns: 60% 40%;
@@ -231,6 +254,12 @@ main button{
   #showBackButton{
     width: 50px;
   }
+  #displayTransaction{
+    width: 700px;
+  }
+}
+
+@media (max-width: 480px) {
   #displayTransaction{
     width: 250px;
   }
